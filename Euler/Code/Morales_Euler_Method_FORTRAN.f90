@@ -12,7 +12,7 @@ program orbit
     double precision, parameter :: t_max=100, dt=1e-3
     double precision, parameter :: G = 1.0, pi=3.14159265358979323846264338327950d0
     double precision :: m(n), mtot, euler_orbit
-    character(len=45), parameter :: path = 'C:/Users/julio/Downloads/Hydrodynamics/Euler/'
+    character(len=50), parameter :: path = 'C:/Users/julio/Downloads/Hydrodynamics/Euler/Data/'
     integer :: nsteps
     
     ! Define masses
@@ -31,16 +31,16 @@ contains
 function initialise() result(rv)
     ! --------------------------------------------------------
     ! PURPOSE:
-    !   Initialise the positions and velocities of the masses.
+    !        Initialise the positions and velocities of the masses.
     !
     ! INPUTS:
-    !   None
+    !        None
     !
     ! OUTPUTS:
     !   [rv(2,n,dim); double precision]:  Array containing position and velocity vectors.
     !
     ! AUTHOR:
-    !   Julio M. Morales
+    !        Julio M. Morales
     ! --------------------------------------------------------
     implicit none
     double precision :: r(n,dim), v(n,dim), rv(2,n,dim)
@@ -71,7 +71,7 @@ end function initialise
 function updatePosVel(r, v, a) result(rv_ud)
     ! --------------------------------------------------------
     ! PURPOSE:
-    !   Update the position and velocity of the masses.
+    !         Update the position and velocity of the masses.
     !
     ! INPUTS:
     !            [r(dim); double precision]:  Position vector.
@@ -82,7 +82,7 @@ function updatePosVel(r, v, a) result(rv_ud)
     !      [rv_ud(dim,n); double precision]:  Array containing position and velocity vectors.
     !
     ! AUTHOR:
-    !   Julio M. Morales
+    !        Julio M. Morales
     ! --------------------------------------------------------
     implicit none
     double precision :: r(dim), v(dim), a(dim), rv_ud(dim,n)
@@ -100,18 +100,18 @@ end function updatePosVel
 function computeAccel(m_dum, r, j) result(a)
     ! --------------------------------------------------------
     ! PURPOSE:
-    !   Compute the acceleration of the masses.
+    !         Compute the acceleration of the masses.
     !
     ! INPUTS:
     !         [m_dum; double precision]:  Mass of jth body.
     !     [r(n, dim); double precision]:  Position vector.
-    !             [j; integer]:  Index of the jth object.
+    !                      [j; integer]:  Index of the jth object.
     !
     ! OUTPUTS:
     !        [a(dim); double precision]:  Acceleration vector.
     !
     ! AUTHOR:
-    !   Julio M. Morales
+    !        Julio M. Morales
     ! --------------------------------------------------------
     implicit none
     double precision :: m_dum, r(n, dim), r_squared, r_cubed, r_diff(dim), a(dim)
@@ -146,16 +146,16 @@ function euler() result(res)
 
     ! --------------------------------------------------------
     ! PURPOSE:
-    !   Computes the relative error in energy for a given time step and returns the result.
+    !        Computes the relative error in energy for a given time step and returns the result.
     !
     ! INPUTS:
-    !   None
+    !        None
     !
     ! OUTPUTS:
-    !         Text file containing position and velocity data of both bodies.
+    !        Text file containing position and velocity data of both bodies.
     !
     ! AUTHOR:
-    !   Julio M. Morales
+    !        Julio M. Morales
     ! --------------------------------------------------------
     implicit none
     integer :: i, j
